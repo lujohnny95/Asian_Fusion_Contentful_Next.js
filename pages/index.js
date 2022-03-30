@@ -1,4 +1,5 @@
 import { createClient } from "contentful"
+import FoodCard from "../components/FoodCard"
 
 export default function Home({ streetFood }) {
   console.log(streetFood)
@@ -6,8 +7,18 @@ export default function Home({ streetFood }) {
   return (
     <div className="food-list">
       {streetFood.map(food => (
-        <div key={food.sys.id}>{food.fields.title}</div>
+        <FoodCard key={food.sys.id} food={food} />
       ))}
+
+      <style jsx>{`
+      .food-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 20px 60px;
+      }
+      `}
+      </style>
+
     </div>
   )
 }
